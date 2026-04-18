@@ -38,7 +38,8 @@ git clone https://github.com/bcht1145/QQ_Elaina_ChatBot.git
 不过先别急着运行`main.py`，请先把你的QQ端启动好  
 #### Windows端
 ##### OneKey用户
-进入`NapCat.一堆数字.Shell`，双击运行`napcat.quick.bat`即可
+进入`NapCat.一堆数字.Shell`，双击运行`NapCatWinBootMain.exe`并扫码登录即可  
+或者你要是图省事，也可以在`napcat.quick.bat`中把它的`10086`改成你机器人的QQ号
 ##### Shell用户
 请到达你的NapCat目录，运行`launcher.bat`，并扫码登录  
 如果你是Win10用户，请使用`launcher-win10.bat`  

@@ -14,7 +14,7 @@ Linux端也可以打开`/opt/QQ/resources/app/app_launcher/napcat/config/webui.j
     * 或者你明白如何配置可以略过我的建议
 5. `HTTP客户端`输入机器人config.py中的`server_address`
     * 将`server_address`中的`ip`和`port`的格式去填
-    * `ip`对应`主机`,`port`对应`port`
+    * `ip`对应`主机`,`port`对应`端口`
     * 若你还没有配置机器人，则推荐使用`http://127.0.0.1:3001`(请不要在NapCat的配置中输入`http://`和`:`)
     * 或者你明白如何配置可以略过我的建议
 
