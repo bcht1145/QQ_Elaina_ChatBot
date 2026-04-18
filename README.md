@@ -60,5 +60,5 @@ python main.py
 ```
 
 # 许可证
-Apache 2.0 | © 2026 bcht
+Apache 2.0 | © 2026 bcht  
 See LICENSE for details.
