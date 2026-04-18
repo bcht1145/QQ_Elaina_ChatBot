@@ -15,7 +15,7 @@ import importlib
 #我肯定是不会写LOGO，占地
 
 logging.basicConfig(
-    level=logging.DEBUG,
+    level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     datefmt='%Y-%m-%d %H:%M:%S'
     )
