@@ -17,8 +17,8 @@ api_AI_model = 'deepseek-chat'             # AI的模型
 api_temperature = 1.3                      # AI的温度，如不懂或是无此需要，无需修改
 api_max_tokens = 4096                      # AI的最大输出量，请保证你清楚你在做什么后再修改，否则无需修改
 
-OTA_allow = False                          # OTA目前为关闭状态，除非你知道你在干什么，否则请勿修改
-github_repo = "bcht1145/QQ_Elaina_ChatBot" # Github仓库地址，不要修改，除非你知道你在做什么，这很重要
+OTA_allow = False                          # OTA目前为测试状态，如果你不嫌可能会炸，那就可以试试
+github_repo = "bcht/QQ_Elaina_ChatBot"     # Github仓库地址，不要修改，除非你知道你在做什么，这很重要
 bot_qq = 114514                            # 机器人QQ号
 admin = [114514]                           # 机器人管理员QQ，为保障安全，暂不支持直接修改
 force_json = False                         # 尝试使用更宽松的方式去判定json，若频繁出现解析错误，请调整为True，否则无需修改

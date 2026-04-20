@@ -30,7 +30,7 @@ if not os.path.exists(os.path.join(path,'user_json')):#初始化ing
     os.makedirs(os.path.join(path,'user_json'))
 
 server = Flask('Elaina',template_folder='Elaina',static_folder='Elaina')
-client_version = 'v1.0.1 alpha'# 机器人版本，用于OTA，不要修改
+client_version = 'v1.0.2 beta'# 机器人版本，用于OTA，不要修改
 
 def get_formatted_time():
     """返回当前时间，格式为 '年份-月份-日期-小时:分钟:秒'"""
