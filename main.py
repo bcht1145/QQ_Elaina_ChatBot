@@ -36,7 +36,6 @@ if not os.path.exists(os.path.join(path,'user_json')):#初始化ing
 
 server = FastAPI('Elaina')
 client_version = 'v1.1.0'# 机器人版本，用于OTA，不要修改
-openai_client = AsyncOpenAI(api_key=api_key,base_url=api_address)#构建AI客户端 APIKey或许也就在这里用了吧
 file_lock = asyncio.Lock() #谁持锁，这文件就是谁的天下。函数啊，大文件…就给你了…(趋势)(大清就交给你了)
 user_locks = {}  # 存储每个用户的锁
 
@@ -186,7 +185,7 @@ async def auto_reply_message(data: dict):
 
 
                 logging.debug(f'{uid}发送了请求')
-
+                openai_client = AsyncOpenAI(api_key=api_key,base_url=api_address)#构建AI客户端 APIKey或许也就在这里用了吧
                 response = await openai_client.chat.completions.create(   #发送请求
                     model=api_AI_model,#模型
                     messages=message,#消息
