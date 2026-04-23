@@ -34,7 +34,7 @@ if not os.path.exists(os.path.join(path,'user_json')):#初始化ing
     logging.warning('数据库不存在，创建')
     os.makedirs(os.path.join(path,'user_json'))
 
-server = FastAPI('Elaina')
+server = FastAPI(title='Elaina')
 client_version = 'v1.1.0'# 机器人版本，用于OTA，不要修改
 file_lock = asyncio.Lock() #谁持锁，这文件就是谁的天下。函数啊，大文件…就给你了…(趋势)(大清就交给你了)
 user_locks = {}  # 存储每个用户的锁
