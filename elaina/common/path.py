@@ -1,2 +1,2 @@
 import os
-path =  os.path.dirname(os.path.dirname(os.path.dirname(__file__))) #文件路径
+path =  os.path.dirname(os.path.dirname(os.path.dirname(__file__))) #项目根目录路径
