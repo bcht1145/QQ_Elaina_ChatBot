@@ -8,10 +8,9 @@ import httpx
 import sys
 import os
 
-sys.path.append(os.path.dirname(os.path.dirname(__file__))) #统一导入上级目录
-from common.tools import User,send_msg,get_formatted_time
-from common.config import *
-from common.path import *
+from elaina.common.tools import User,send_msg,get_formatted_time
+from elaina.common.setting import *
+from elaina.common.path import ROOT_PATH as path
 
 logging.getLogger(__name__)#同步主文件的日志格式
 
@@ -32,20 +31,6 @@ async def auto_reply_message(data:dict):
     msg = data.get("raw_message")#消息
 
     user = User(uid,path)#建立用户对象方便操作
-
-    if msg == '/help':#用于获取帮助
-        try:
-            with open('help.txt','r',encoding='utf-8') as f:#防手欠x2
-                await send_msg(f'{f.read()}',uid,gid)
-        except FileNotFoundError:
-            await send_msg('未找到帮助文档文件',uid,gid)
-            logging.exception('未找到帮助文档文件，请确认help.txt是否存在且未重命名')
-            return {}
-        return {}
-
-    if msg == '/重载' and uid in admin:
-        hot_reload_config()
-        await send_msg('已重载配置文件',uid,gid)
 
     if msg == '/删除聊天记录':
         logging.info(f'{uid}删除了除好感度之外的所有记录')

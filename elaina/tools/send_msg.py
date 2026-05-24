@@ -2,8 +2,8 @@ import httpx
 import logging
 import os
 import sys
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))#统一导入上级目录
-from common.config import *
+
+from elaina.common.setting import *
 
 logging.getLogger(__name__)#同步主文件的日志格式
 

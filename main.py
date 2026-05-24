@@ -15,7 +15,7 @@ import httpx
 import asyncio
 import aiofiles
 
-from elaina.common.plugin import *
+from elaina.common.plugin import ai_auto_reply_message,send_msg
 
 #首先，去他丫的LOGO
 #我肯定是不会写LOGO，占地
@@ -47,16 +47,19 @@ def get_formatted_time():
     """返回当前时间，格式为 '年份-月份-日期-小时:分钟:秒'"""
     return datetime.now().strftime("%Y-%m-%d-%H:%M:%S")
 
-def hot_reload_config():
-    """用于热重载配置文件"""
-    logging.info('正在热重载配置文件')
-    importlib.reload(config)
-    globals().update({k: v for k, v in vars(config).items() if not k.startswith("_")})
-    """
-    我承认这一大堆我也看不懂
-    反正就是把那一大堆变量读进来,赋值给全局变量
-    并且忽视私有变量(下划线开头)
-    """
+# def hot_reload_config():
+#     """用于热重载配置文件"""
+#     logging.info('正在热重载配置文件')
+#     importlib.reload(config)
+#     globals().update({k: v for k, v in vars(config).items() if not k.startswith("_")})
+#     """
+#     我承认这一大堆我也看不懂
+#     反正就是把那一大堆变量读进来,赋值给全局变量
+#     并且忽视私有变量(下划线开头)
+#     """
+"""
+因为主要的功能被移到后端了,因此热加载不能用了QAQ
+"""
 
 async def get_user_lock(uid: int):
     """获取用户专属的异步锁"""
@@ -79,7 +82,16 @@ async def auto_reply_message(data: dict):
             logging.debug('Q群管家at你了')
             return {}
         await ai_auto_reply_message(data)
-        
+
+        if msg == '/help':#用于获取帮助
+            try:
+                with open('help.txt','r',encoding='utf-8') as f:#防手欠x2
+                    await send_msg(f'{f.read()}',uid,gid)
+            except FileNotFoundError:
+                await send_msg('未找到帮助文档文件',uid,gid)
+                logging.exception('未找到帮助文档文件，请确认help.txt是否存在且未重命名')
+                return {}
+            return {}
         
     return {}
 
