@@ -1,0 +1,55 @@
+name: Bug 报告
+description: 报告一个问题或异常行为
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢您报告问题！请填写以下信息。
+
+  - type: input
+    id: version
+    attributes:
+      label: Elaina 版本
+      description: 你正在使用的版本号
+      placeholder: e.g. v[version]
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: 操作系统
+      options:
+        - Windows
+        - Linux
+        - macOS
+        - 其他
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 复现步骤
+      description: 如何复现这个问题？
+      placeholder: |
+        1. 运行 `python main.py`
+        2. 发送 `/AI Ciallo~`
+        3. 看到报错...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期行为
+      description: 你期望发生什么？
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 日志信息
+      description: 请粘贴相关日志（如有）
+      render: shell
