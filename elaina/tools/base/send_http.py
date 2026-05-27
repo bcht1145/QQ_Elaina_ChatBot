@@ -1,6 +1,5 @@
 import httpx
 import logging
-import xml.etree.ElementTree as ET
 
 logging.getLogger(__name__)#同步主文件的日志格式
 
@@ -48,8 +47,6 @@ async def http_download(url:str,data:dict,try_limit:int=5):
                     content_type = response.headers.get('Content-Type','').lower()#将所有的内容类型都转为小写，方便判断
                     if 'application/json' in content_type:#若是json，则自动解析，由于是底层，因此不允许使用高级json解析器
                         return response.json()
-                    elif 'application/xml' in content_type or 'text/xml' in content_type:#解析xml，说真的，我真心不知道我搞这个何意味
-                        return ET.fromstring(response.text)
                     elif 'text/plain' in content_type:#纯文本就返回吧
                         return response.text
                     elif 'image/' in content_type or 'application/octet-stream' in content_type:#如果是二进制数据则返回bytes
