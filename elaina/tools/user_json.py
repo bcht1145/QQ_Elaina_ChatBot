@@ -44,7 +44,7 @@ def is_user_template_complete(data : dict ) -> bool:#用于检查传入的字典
 class User:
     def __init__(self,uid):#初始化
         self.uid = uid
-        self.path = os.path.join(ROOT_PATH,'user_json',str(self.uid)+'.json')
+        self._path = os.path.join(ROOT_PATH,'user_json',str(self.uid)+'.json')
     
     async def load(self) -> dict:
         """若存在用户文件，则返回用户的信息  
@@ -58,11 +58,11 @@ class User:
         "favor":0,#好感度  
         "time":[]"""  
         user = {}
-        if os.path.isfile(self.path):
-            async with aiofiles.open(self.path,'r',encoding='utf-8') as f:
+        if os.path.isfile(self._path):
+            async with aiofiles.open(self._path,'r',encoding='utf-8') as f:
                 user = json.loads(await f.read())
         else:
-            async with aiofiles.open(self.path,'w',encoding='utf-8') as f:
+            async with aiofiles.open(self._path,'w',encoding='utf-8') as f:
                 await f.write(json.dumps(user_template,ensure_ascii=False,indent=4))
                 user = user_template
         return user
@@ -73,7 +73,7 @@ class User:
         None  
         输出:  
         None"""
-        async with aiofiles.open(self.path,'w',encoding='utf-8') as f:
+        async with aiofiles.open(self._path,'w',encoding='utf-8') as f:
             await f.write(json.dumps(user_template,ensure_ascii=False,indent=4))
 
     async def write(self,data) -> None:
@@ -89,7 +89,7 @@ class User:
             raise ValueError('模版不匹配！李在干什麽？')
             return #我知道这行没意义，但是我就是习惯了
         
-        async with aiofiles.open(self.path,'w',encoding='utf-8') as f:
+        async with aiofiles.open(self._path,'w',encoding='utf-8') as f:
             await f.write(json.dumps(data,ensure_ascii=False,indent=4))
     
 if __name__ == '__main__':
