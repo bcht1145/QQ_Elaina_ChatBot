@@ -37,7 +37,7 @@ if not os.path.exists(os.path.join(path,'group_json')):
     os.makedirs(os.path.join(path,'group_json'))
 
 SERVER = FastAPI(title='Elaina')
-CLIENT_VERSION = 'v2.1.1'# 机器人版本，用于OTA，不要修改
+CLIENT_VERSION = 'v2.1.3'# 机器人版本，用于OTA，不要修改
 FILE_LOCK = asyncio.Lock() #谁持锁，这文件就是谁的天下。函数啊，大文件…就给你了…(趋势)(大清就交给你了)
 user_locks = {}  # 存储每个用户的锁
 KEEP_FILE = ['config.py','user_json','group_json']
